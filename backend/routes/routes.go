@@ -3,6 +3,7 @@ package routes
 import (
 	"net/http"
 
+	"safebase/controllers"
 	"safebase/middleware"
 
 	"github.com/go-chi/chi/v5"
@@ -17,6 +18,8 @@ func SetupRouter() http.Handler {
 	r.Use(middleware.CORSHandler())
 
 	// -----ROUTES-----//
+		// ----- ROUTES PUBLIQUES -----
+	r.Post("/register", controllers.Register)
 
 	
 	// Retourne le routeur configuré comme 'http.Handler'
