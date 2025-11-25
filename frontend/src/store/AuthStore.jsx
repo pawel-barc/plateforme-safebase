@@ -14,6 +14,14 @@ const useAuthStore = create(
           currentUser: userData,
         });
       },
+      // Méthode de déconnexion : réinitialise l'état d'authentification
+      logout: () => {
+        console.log("Déconnexion appélée");
+        set({
+          isAuthenticated: false,
+          currentUser: null,
+        });
+      },
 
       // Méthode pour vérifier si l'utilisateur est réellement connecté
       checkAuthentication: () => {

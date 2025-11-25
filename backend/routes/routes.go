@@ -21,6 +21,10 @@ func SetupRouter() http.Handler {
 		// ----- ROUTES PUBLIQUES -----
 	r.Post("/register", controllers.Register)
 	r.Post("/login", controllers.Login)
+	r.Post("/refresh-token", controllers.RefreshToken)
+
+	// ----- ROUTES PROTEGEES ------ par le middleware d'authentification
+r.With(middleware.AuthMiddleware).Post("/logout", controllers.Logout)
 
 	
 	// Retourne le routeur configuré comme 'http.Handler'

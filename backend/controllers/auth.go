@@ -149,3 +149,27 @@ func RefreshToken(w http.ResponseWriter, r *http.Request) {
 
 	utils.SendSuccess(w, http.StatusOK, "Token mis à jour avec succès")
 }
+
+// ----- DECONNEXION DE L'UTILISATEUR ------
+func Logout(w http.ResponseWriter, r *http.Request) {
+	// Suppression des cookies
+	http.SetCookie(w, &http.Cookie{
+		Name: "access_token",
+		Value: "",
+		Path: "/",
+		HttpOnly: true,
+		MaxAge: -1,
+		SameSite: http.SameSiteLaxMode,
+	})
+
+	http.SetCookie(w, &http.Cookie{
+		Name: "refresh_token",
+		Value: "",
+		Path: "/",
+		HttpOnly: true,
+		MaxAge: -1,
+		SameSite: http.SameSiteLaxMode,
+	})
+
+	utils.SendSuccess(w, http.StatusOK, "Déconnexion réussie")
+}
