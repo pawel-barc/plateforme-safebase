@@ -1,12 +1,14 @@
 // src/router/Router.jsx
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Register from "../components/pages/Register";
+import Login from "../components/pages/Login";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
