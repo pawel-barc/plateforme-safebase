@@ -20,6 +20,7 @@ func SetupRouter() http.Handler {
 	// -----ROUTES-----//
 		// ----- ROUTES PUBLIQUES -----
 	r.Post("/register", controllers.Register)
+	r.Post("/login", controllers.Login)
 
 	
 	// Retourne le routeur configuré comme 'http.Handler'

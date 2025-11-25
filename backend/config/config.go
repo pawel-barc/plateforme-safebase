@@ -14,10 +14,11 @@ type Config struct {
 	DBHost string
 	DBPort string
 	DBSSLMode string
+	JWTSecret []byte
 }
 
 var Cfg Config
-
+// Gestion des données sensibles stockées dans le fichier .env
 func init() {
 	godotenv.Load();
 
@@ -25,10 +26,12 @@ func init() {
 		DBUser: getEnvOrFail("DB_USER"),
 		DBPassword: getEnvOrFail("DB_PASSWORD"),
 		DBName: getEnvOrFail("DB_NAME"),
+		JWTSecret: []byte(getEnvOrFail("JWT_SECRET")),
 
 		DBPort: os.Getenv("DB_PORT"),
 		DBHost: os.Getenv("DB_HOST"),
 		DBSSLMode: os.Getenv("DB_SSLMODE"),
+
 	}
 
 	if Cfg.DBHost == "" {
